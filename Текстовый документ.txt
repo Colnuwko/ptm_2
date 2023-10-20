@@ -1,0 +1,82 @@
+'''
+                if os.path.isfile(stroka):
+                    with open(stroka, mode="a") as fil:
+                        writer = csv.writer(fil, dialect='excel', delimiter=",", lineterminator="\r")
+                        now = datetime.datetime.now()
+                        tm = str(now.hour) + ":" + str(now.minute)
+                        dt = str(now.day) + "-" + str(now.month) + "-" + str(int(now.year) - 2000)
+                        writer.writerow((self.FIO_value.text(), self.vzvod_value.text(), count, othenka, tm, dt))
+                   
+        if os.path.isfile("Path.csv"):
+            with open("Path.csv", mode="r") as file:
+                reader = csv.reader(file)
+                spisok = list(reader)
+                stroka = str(" ".join(spisok[0])) + "/Номенклатура_результаты.csv"
+                print(stroka)
+                if os.path.isfile(stroka):
+                    with open(stroka, mode="a") as fil:
+                        writer = csv.writer(fil, dialect='excel', delimiter=",", lineterminator="\r")
+                        now = datetime.datetime.now()
+                        tm = str(now.hour) + ":" + str(now.minute)
+                        dt = str(now.day) + "-" + str(now.month) + "-" + str(int(now.year) - 2000)
+                        writer.writerow((self.FIO_value.text(), self.vzvod_value.text(), count, othenka, tm, dt))
+                else:
+                    os.chdir(out_directory)
+                    if os.path.isfile("Номенклатура_результаты.csv"):
+                        with open("Номенклатура_результаты.csv", mode="a") as file:
+                            writer = csv.writer(file, dialect='excel', delimiter="", lineterminator="\r")
+                            now = datetime.datetime.now()
+                            tm = str(now.hour) + ":" + str(now.minute)
+                            dt = str(now.day) + "-" + str(now.month) + "-" + str(int(now.year) - 2000)
+                            writer.writerow((self.FIO_value.text(), self.vzvod_value.text(), count, othenka, tm, dt))
+                    else:
+                        with open("Номенклатура_результаты.csv", mode="w") as file:
+                            writer = csv.writer(file, dialect='excel', delimiter=",", lineterminator="\r")
+                            writer.writerow(
+                                ("ФИО", "Взвод", "Количество баллов", "Оценка", "Время завершения",
+                                 "Дата"))  # Заголовки столбца
+                        with open("Номенклатура_результаты.csv", mode="a") as file:
+                            writer = csv.writer(file, dialect='excel', delimiter=",", lineterminator="\r")
+                            now = datetime.datetime.now()
+                            tm = str(now.hour) + ":" + str(now.minute)
+                            dt = str(now.day) + "-" + str(now.month) + "-" + str(int(now.year) - 2000)
+                            writer.writerow((self.FIO_value.text(), self.vzvod_value.text(), count, othenka, tm, dt))
+        else:
+            self.dirlist = QFileDialog.getExistingDirectory(self, "Выбрать папку", ".")
+            print(self.dirlist)
+            if os.path.isdir(self.dirlist):
+                os.chdir(self.dirlist)
+                with open("Номенклатура_результаты.csv", mode="w") as file:
+                    writer = csv.writer(file, dialect='excel', delimiter=",", lineterminator="\r")
+                    writer.writerow(
+                        ("ФИО", "Взвод", "Количество баллов", "Оценка", "Время завершения", "Дата"))  # Заголовки столбца
+                with open("Номенклатура_результаты.csv", mode="a") as file:
+                    writer = csv.writer(file, dialect='excel', delimiter=",", lineterminator="\r")
+                    now = datetime.datetime.now()
+                    tm = str(now.hour) + ":" + str(now.minute)
+                    dt = str(now.day) + "-" + str(now.month) + "-" + str(int(now.year) - 2000)
+                    writer.writerow((self.FIO_value.text(), self.vzvod_value.text(), count, othenka, tm, dt))
+                os.chdir(out_directory)
+                with open("Path.csv", mode="w+") as f:
+                    writer = csv.writer(f, dialect='excel')
+                    writer.writerow([self.dirlist])
+            else:
+                if os.path.isfile("Номенклатура_результаты.csv"):
+                    with open("Номенклатура_результаты.csv", mode="a") as file:
+                        writer = csv.writer(file, dialect='excel', delimiter=",", lineterminator="\r")
+                        now = datetime.datetime.now()
+                        tm = str(now.hour) + ":" + str(now.minute)
+                        dt = str(now.day) + "-" + str(now.month) + "-" + str(int(now.year) - 2000)
+                        writer.writerow((self.FIO_value.text(), self.vzvod_value.text(), count, othenka, tm, dt))
+                else:
+                    with open("Номенклатура_результаты.csv", mode="w") as file:
+                        writer = csv.writer(file, dialect='excel', delimiter=",", lineterminator="\r")
+                        writer.writerow(
+                            ("ФИО", "Взвод", "Количество баллов", "Оценка", "Время завершения",
+                             "Дата"))  # Заголовки столбца
+                    with open("Номенклатура_результаты.csv", mode="a") as file:
+                        writer = csv.writer(file, dialect='excel', delimiter=",", lineterminator="\r")
+                        now = datetime.datetime.now()
+                        tm = str(now.hour) + ":" + str(now.minute)
+                        dt = str(now.day) + "-" + str(now.month) + "-" + str(int(now.year) - 2000)
+                        writer.writerow((self.FIO_value.text(), self.vzvod_value.text(), count, othenka, tm, dt))'''
